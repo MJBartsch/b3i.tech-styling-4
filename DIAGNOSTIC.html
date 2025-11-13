@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tab Diagnostic</title>
+    <style>
+        /* Minimal CSS to test if basic structure works */
+        .crypto-betting-widget .tab-pane {
+            display: none;
+            padding: 20px;
+            border: 2px solid #ccc;
+            margin: 10px 0;
+            background: #f9f9f9;
+        }
+        .crypto-betting-widget .tab-pane.active {
+            display: block;
+            border-color: green;
+        }
+        .crypto-betting-widget .tab-button {
+            padding: 10px 20px;
+            margin-right: 5px;
+            border: 1px solid #999;
+            background: #fff;
+            cursor: pointer;
+        }
+        .crypto-betting-widget .tab-button.active {
+            background: green;
+            color: white;
+        }
+        .debug {
+            background: #ffffcc;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tab System Diagnostic</h1>
+
+    <div class="debug">
+        <h3>Instructions:</h3>
+        <p>1. You should see "Overview Content" below (in green border)</p>
+        <p>2. Click the "Fees" button</p>
+        <p>3. Overview should hide and Fees should show</p>
+        <p>4. Check the debug log at the bottom</p>
+    </div>
+
+    <div class="crypto-betting-widget">
+        <div class="platform-card" id="test-888">
+            <h2>888Sport Test</h2>
+
+            <div class="tabs-container">
+                <div class="tab-nav">
+                    <button class="tab-button active" data-tab="test-overview">Overview</button>
+                    <button class="tab-button" data-tab="test-fees">Fees</button>
+                    <button class="tab-button" data-tab="test-sports">Sports</button>
+                    <button class="tab-button" data-tab="test-proscons">Pros & Cons</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="test-overview">
+                        <h4>Overview Content</h4>
+                        <p><strong>✓ YOU SHOULD SEE THIS on page load</strong></p>
+                        <p>This proves the CSS is working (display: block)</p>
+                    </div>
+
+                    <div class="tab-pane" id="test-fees">
+                        <h4>Fees Content</h4>
+                        <p><strong>✓ YOU SHOULD SEE THIS after clicking Fees button</strong></p>
+                        <p>This proves JavaScript is working</p>
+                    </div>
+
+                    <div class="tab-pane" id="test-sports">
+                        <h4>Sports Content</h4>
+                        <p>Sports tab content</p>
+                    </div>
+
+                    <div class="tab-pane" id="test-proscons">
+                        <h4>Pros & Cons Content</h4>
+                        <p>Pros & Cons content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="debug">
+        <h3>Debug Log:</h3>
+        <div id="log" style="font-family: monospace; font-size: 12px;"></div>
+    </div>
+
+    <script>
+    (function() {
+        const log = document.getElementById('log');
+
+        function addLog(msg) {
+            const p = document.createElement('p');
+            p.style.margin = '2px 0';
+            p.textContent = new Date().toLocaleTimeString() + ': ' + msg;
+            log.appendChild(p);
+        }
+
+        addLog('Script started');
+
+        // Check if elements exist
+        const widget = document.querySelector('.crypto-betting-widget');
+        addLog('Widget found: ' + (widget ? 'YES' : 'NO'));
+
+        const tabButtons = document.querySelectorAll('.tab-button');
+        addLog('Tab buttons found: ' + tabButtons.length);
+
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        addLog('Tab panes found: ' + tabPanes.length);
+
+        const activePane = document.querySelector('.tab-pane.active');
+        addLog('Active pane found: ' + (activePane ? activePane.id : 'NONE'));
+
+        if (activePane) {
+            const style = window.getComputedStyle(activePane);
+            addLog('Active pane display style: ' + style.display);
+        }
+
+        // Initialize tabs
+        if (!widget) {
+            addLog('ERROR: Widget not found!');
+            return;
+        }
+
+        addLog('Attaching click listener to widget...');
+
+        widget.addEventListener('click', function(e) {
+            const button = e.target.closest('.tab-button');
+            if (!button) return;
+
+            addLog('Button clicked: ' + button.textContent.trim());
+
+            e.preventDefault();
+            const tabName = button.getAttribute('data-tab');
+            addLog('Tab name from data-tab: ' + tabName);
+
+            const platformCard = button.closest('.platform-card');
+            if (!platformCard) {
+                addLog('ERROR: Platform card not found!');
+                return;
+            }
+
+            // Hide all panes
+            const panes = platformCard.querySelectorAll('.tab-pane');
+            addLog('Hiding ' + panes.length + ' panes');
+            panes.forEach(pane => pane.classList.remove('active'));
+
+            // Deactivate all buttons
+            const buttons = platformCard.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected pane
+            const targetPane = platformCard.querySelector('#' + tabName);
+            if (targetPane) {
+                targetPane.classList.add('active');
+                button.classList.add('active');
+                addLog('SUCCESS: Activated pane ' + tabName);
+            } else {
+                addLog('ERROR: Could not find pane with id: ' + tabName);
+            }
+        });
+
+        addLog('Initialization complete!');
+    })();
+    </script>
+</body>
+</html>
