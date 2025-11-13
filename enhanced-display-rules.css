@@ -1,0 +1,87 @@
+/* ==========================================================
+   ENHANCED DISPLAY RULES - Trust Badges, Stars, Arrows
+   These override any conflicting styles to ensure proper display
+   ========================================================== */
+
+/* Trust badges - force correct display */
+.crypto-betting-widget .qv-trust-signals {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    padding-top: 1rem !important;
+    margin-top: 1rem !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.crypto-betting-widget .qv-trust-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.375rem !important;
+    font-size: 0.75rem !important;
+    color: #515154 !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+}
+
+.crypto-betting-widget .qv-trust-icon {
+    display: inline-flex !important;
+    width: 16px !important;
+    height: 16px !important;
+    color: #22c55e !important;
+    flex-shrink: 0 !important;
+}
+
+/* Stars - force correct display */
+.crypto-betting-widget .star,
+.crypto-betting-widget .qv-rating-stars .star,
+.crypto-betting-widget .rating-stars .star {
+    display: inline-block !important;
+    width: 12px !important;
+    height: 12px !important;
+    color: #ff6b35 !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    flex-shrink: 0 !important;
+}
+
+.crypto-betting-widget .qv-rating-stars,
+.crypto-betting-widget .rating-stars {
+    display: inline-flex !important;
+    gap: 2px !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+}
+
+/* Arrow icons - force correct display */
+.crypto-betting-widget .qv-arrow {
+    display: inline-block !important;
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Mobile - hide star icons, show text rating */
+@media (max-width: 768px) {
+    .crypto-betting-widget .star,
+    .crypto-betting-widget .qv-rating-stars .star,
+    .crypto-betting-widget .rating-stars .star {
+        display: none !important;
+    }
+
+    .crypto-betting-widget .qv-winner-rating,
+    .crypto-betting-widget .rating-text {
+        font-size: 0.875rem !important;
+        font-weight: 600 !important;
+        color: #ff6b35 !important;
+        display: inline-block !important;
+    }
+}
+
+/* ==========================================================
+   END ENHANCED DISPLAY RULES
+   ========================================================== */
+
