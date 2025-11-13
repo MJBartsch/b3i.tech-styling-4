@@ -1,0 +1,1253 @@
+/* ===================================
+   CRYPTO BETTING WIDGET - ELEMENTOR OPTIMIZED
+   Fixed for CLS (Cumulative Layout Shift) Issues
+   All selectors scoped to .crypto-betting-widget
+   Reduced !important declarations for better Elementor compatibility
+   =================================== */
+
+/* Reset & Base Styles - Scoped to prevent conflicts */
+.crypto-betting-widget {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-display: swap; /* Prevent FOIT/FOUT CLS issues */
+    line-height: 1.5;
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.crypto-betting-widget * {
+    box-sizing: border-box;
+}
+
+.crypto-betting-widget img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    /* CLS FIX: Images now have explicit width/height in HTML */
+}
+
+.crypto-betting-widget a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+/* ===================================
+   CLS PREVENTION - Reserved Space
+   =================================== */
+
+/* Reserve space for images BEFORE they load */
+.crypto-betting-widget .qv-platform-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    min-height: 106px; /* 90px image + 16px padding */
+    min-width: 106px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Reserve minimum heights to prevent layout shifts */
+.crypto-betting-widget .quick-verdict {
+    min-height: 400px;
+}
+
+.crypto-betting-widget .qv-category {
+    min-height: 280px;
+}
+
+.crypto-betting-widget .tab-content {
+    min-height: 200px; /* Prevents layout shift when switching tabs */
+}
+
+.crypto-betting-widget .qv-winner-name {
+    min-height: 28px; /* Reserve space for name + rating */
+}
+
+.crypto-betting-widget .qv-trust-signals {
+    min-height: 40px; /* Reserve space for trust badges */
+}
+
+/* ===================================
+   ARTICLE HEADER - Embossed Card Design
+   =================================== */
+
+.crypto-betting-widget .article-header {
+    background: linear-gradient(145deg, #f0f0f2, #ffffff);
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow:
+        8px 8px 16px rgba(0, 0, 0, 0.08),
+        -8px -8px 16px rgba(255, 255, 255, 0.9),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.5),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.crypto-betting-widget .article-header::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    border-radius: 16px 16px 0 0;
+    pointer-events: none;
+}
+
+.crypto-betting-widget .article-header h1 {
+    color: #1d1d1f;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.02em;
+    position: relative;
+}
+
+.crypto-betting-widget .article-header h1 .highlight {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c61 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.crypto-betting-widget .article-header .intro {
+    color: #515154;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+}
+
+.crypto-betting-widget .article-header .intro:last-child {
+    margin-bottom: 0;
+}
+
+/* ===================================
+   QUICK VERDICT SECTION
+   =================================== */
+
+.crypto-betting-widget .quick-verdict {
+    background: linear-gradient(145deg, #ffffff, #fafafa);
+    padding: 1.75rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.04),
+        0 4px 8px rgba(0, 0, 0, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+/* Header */
+.crypto-betting-widget .qv-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.crypto-betting-widget .qv-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b35 0%, #ff8c61 100%);
+    /* CLS FIX: No animation to prevent layout shift */
+}
+
+.crypto-betting-widget .qv-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 0.375rem 0;
+    letter-spacing: -0.01em;
+}
+
+.crypto-betting-widget .qv-subtitle {
+    font-size: 0.875rem;
+    color: #515154;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.crypto-betting-widget .qv-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #86868b;
+}
+
+.crypto-betting-widget .qv-updated time {
+    color: #ff6b35;
+    font-weight: 500;
+}
+
+/* Category Grid */
+.crypto-betting-widget .qv-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.875rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Individual Category Card */
+.crypto-betting-widget .qv-category {
+    background: linear-gradient(145deg, #f8f8f9, #ffffff);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.03),
+        -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.crypto-betting-widget .qv-category:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        4px 4px 12px rgba(0, 0, 0, 0.08),
+        -4px -4px 12px rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 107, 53, 0.2);
+}
+
+/* Category Header */
+.crypto-betting-widget .qv-category-header {
+    padding: 0.875rem 1rem 0.625rem;
+    background: rgba(255, 107, 53, 0.03);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.08);
+    position: relative;
+}
+
+.crypto-betting-widget .qv-category-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #86868b;
+    display: block;
+    margin-bottom: 0.125rem;
+}
+
+.crypto-betting-widget .qv-category-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin: 0;
+}
+
+/* Category Body */
+.crypto-betting-widget .qv-category-body {
+    padding: 0.875rem 1rem;
+}
+
+/* CLS FIX: Platform logo - explicit sizing */
+.crypto-betting-widget .qv-platform-logo img {
+    border-radius: 8px;
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    /* aspect-ratio handled by explicit width/height in HTML */
+}
+
+.crypto-betting-widget .qv-winner-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Winner Name with Rating */
+.crypto-betting-widget .qv-winner-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 0.375rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    transition: color 0.2s ease;
+}
+
+.crypto-betting-widget .qv-winner-name > span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.crypto-betting-widget .qv-category:hover .qv-winner-name {
+    color: #ff6b35;
+}
+
+/* Winner Rating */
+.crypto-betting-widget .qv-winner-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: #ff6b35;
+    font-weight: 600;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Star Ratings - CLS Optimized */
+.crypto-betting-widget .qv-rating-stars {
+    display: inline-flex;
+    gap: 1px;
+    flex-shrink: 0;
+}
+
+.crypto-betting-widget .star {
+    width: 8px;
+    height: 8px;
+    fill: #ff6b35;
+    color: #ff6b35;
+    flex-shrink: 0;
+    display: inline-block;
+    font-size: 8px;
+    line-height: 1;
+}
+
+.crypto-betting-widget .star.empty {
+    fill: #e5e5e7;
+    color: #e5e5e7;
+}
+
+.crypto-betting-widget .rating-text {
+    font-size: 0.875rem;
+}
+
+/* Winner Features List */
+.crypto-betting-widget .qv-winner-features {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.crypto-betting-widget .qv-winner-features li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.75rem;
+    color: #515154;
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+}
+
+.crypto-betting-widget .qv-winner-features li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #ff6b35;
+    font-weight: 700;
+}
+
+/* Highlight Badge */
+.crypto-betting-widget .qv-highlight-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 97, 0.1));
+    color: #ff6b35;
+    font-size: 0.625rem;
+    font-weight: 600;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.crypto-betting-widget .qv-category:hover .qv-highlight-badge {
+    background: linear-gradient(135deg, #ff6b35, #ff8c61);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Category Footer */
+.crypto-betting-widget .qv-category-footer {
+    padding: 0.625rem 1rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.crypto-betting-widget .qv-view-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #515154;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.crypto-betting-widget .qv-view-details:hover {
+    color: #ff6b35;
+}
+
+.crypto-betting-widget .qv-arrow {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.crypto-betting-widget .qv-view-details:hover .qv-arrow {
+    transform: translateX(3px);
+}
+
+/* Featured Category Badge */
+.crypto-betting-widget .qv-category.featured {
+    border-color: rgba(255, 107, 53, 0.2);
+    box-shadow:
+        0 0 0 1px rgba(255, 107, 53, 0.1),
+        2px 2px 4px rgba(0, 0, 0, 0.03),
+        -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.crypto-betting-widget .qv-category.featured::before {
+    content: 'TOP PICK';
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c61);
+    color: #ffffff;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
+    z-index: 1;
+}
+
+/* Compare Section */
+.crypto-betting-widget .qv-compare-section {
+    padding: 1rem;
+    background: rgba(255, 107, 53, 0.02);
+    border-radius: 8px;
+    margin-top: 1.25rem;
+}
+
+.crypto-betting-widget .qv-compare-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.crypto-betting-widget .qv-compare-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin: 0;
+}
+
+.crypto-betting-widget .qv-compare-count {
+    font-size: 0.75rem;
+    color: #86868b;
+}
+
+.crypto-betting-widget .qv-compare-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background: linear-gradient(135deg, #ff6b35, #ff8c61);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 2px 4px rgba(255, 107, 53, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.crypto-betting-widget .qv-compare-btn:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        0 4px 8px rgba(255, 107, 53, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Trust Signals - CLS Optimized */
+.crypto-betting-widget .qv-trust-signals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    flex-wrap: wrap;
+}
+
+.crypto-betting-widget .qv-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: #515154;
+    flex-shrink: 0;
+}
+
+.crypto-betting-widget .qv-trust-icon {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    color: #22c55e;
+    flex-shrink: 0;
+}
+
+/* ===================================
+   PLATFORM COMPARISON TABLE
+   =================================== */
+
+.crypto-betting-widget .table-container {
+    background: linear-gradient(145deg, #ffffff, #fafafa);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.04),
+        0 4px 8px rgba(0, 0, 0, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.crypto-betting-widget .table-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.crypto-betting-widget .table-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b35 0%, #ff8c61 100%);
+}
+
+.crypto-betting-widget .table-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: -0.01em;
+}
+
+.crypto-betting-widget .table-subtitle {
+    font-size: 0.875rem;
+    color: #515154;
+    margin: 0;
+}
+
+.crypto-betting-widget .table-note {
+    font-size: 0.75rem;
+    color: #86868b;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.crypto-betting-widget .table-responsive {
+    overflow-x: auto;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 53, 0.2) transparent;
+}
+
+.crypto-betting-widget .table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+
+.crypto-betting-widget .table-responsive::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 3px;
+}
+
+.crypto-betting-widget .table-responsive::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 53, 0.3);
+    border-radius: 3px;
+}
+
+.crypto-betting-widget .platform-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.875rem;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.crypto-betting-widget .platform-table thead {
+    background: linear-gradient(180deg, #f8f8f9 0%, #f0f0f2 100%);
+}
+
+.crypto-betting-widget .platform-table thead th {
+    padding: 0.875rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #1d1d1f;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.1);
+    white-space: nowrap;
+}
+
+.crypto-betting-widget .platform-table tbody tr {
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.crypto-betting-widget .platform-table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(255, 107, 53, 0.03) 0%, rgba(255, 107, 53, 0.05) 100%);
+}
+
+.crypto-betting-widget .platform-table tbody td {
+    padding: 1rem;
+    color: #424245;
+    vertical-align: middle;
+}
+
+.crypto-betting-widget .platform-table .highlight {
+    color: #ff6b35;
+    font-weight: 600;
+}
+
+.crypto-betting-widget .platform-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    margin-left: 0.5rem;
+}
+
+.crypto-betting-widget .platform-badge.best-overall {
+    background: rgba(74, 222, 128, 0.1);
+    color: #22c55e;
+}
+
+.crypto-betting-widget .platform-badge.lowest-fees {
+    background: rgba(255, 107, 53, 0.1);
+    color: #ff6b35;
+}
+
+.crypto-betting-widget .platform-badge.beginner {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+/* Table Rating Display */
+.crypto-betting-widget .platform-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+}
+
+.crypto-betting-widget .rating-stars {
+    display: inline-flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.crypto-betting-widget .rating-value {
+    margin-left: 0.25rem;
+    font-size: 0.75rem;
+    color: #515154;
+    white-space: nowrap;
+}
+
+/* ===================================
+   PLATFORM REVIEW CARDS
+   =================================== */
+
+.crypto-betting-widget .platform-card {
+    background: linear-gradient(145deg, #ffffff, #fafafa);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.04),
+        0 4px 8px rgba(0, 0, 0, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 2rem;
+}
+
+/* Card Header with Background Image */
+.crypto-betting-widget .card-header {
+    position: relative;
+    padding: 2rem;
+    min-height: 180px; /* CLS FIX: Reserve space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f5f5f5; /* Fallback color */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Use data attribute instead of CSS variable for better compatibility */
+.crypto-betting-widget .card-header[data-bg-image] {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), attr(data-bg-image url);
+}
+
+.crypto-betting-widget .platform-rating {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.375rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ff6b35;
+}
+
+.crypto-betting-widget .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.crypto-betting-widget .platform-logo {
+    width: 120px;
+    height: 120px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crypto-betting-widget .platform-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.crypto-betting-widget .platform-tagline {
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats Bar */
+.crypto-betting-widget .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 107, 53, 0.02);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.crypto-betting-widget .stat-item {
+    text-align: center;
+}
+
+.crypto-betting-widget .stat-label {
+    font-size: 0.75rem;
+    color: #86868b;
+    margin-bottom: 0.25rem;
+}
+
+.crypto-betting-widget .stat-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1d1d1f;
+}
+
+.crypto-betting-widget .stat-value.highlight {
+    color: #ff6b35;
+}
+
+/* CTA Section */
+.crypto-betting-widget .cta-section {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.crypto-betting-widget .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #ff6b35, #ff8c61);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    box-shadow:
+        0 4px 6px rgba(255, 107, 53, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.crypto-betting-widget .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 12px rgba(255, 107, 53, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.crypto-betting-widget .cta-note {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #86868b;
+}
+
+/* Tabs Container */
+.crypto-betting-widget .tabs-container {
+    padding: 1.5rem;
+}
+
+.crypto-betting-widget .tab-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.crypto-betting-widget .tab-button {
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #86868b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    margin-bottom: -2px;
+}
+
+.crypto-betting-widget .tab-button:hover {
+    color: #ff6b35;
+}
+
+.crypto-betting-widget .tab-button.active {
+    color: #ff6b35;
+    border-bottom-color: #ff6b35;
+}
+
+.crypto-betting-widget .tab-content {
+    /* min-height already set for CLS */
+}
+
+.crypto-betting-widget .tab-pane {
+    display: none;
+}
+
+.crypto-betting-widget .tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.crypto-betting-widget .tab-pane h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 1rem 0;
+}
+
+.crypto-betting-widget .tab-pane p {
+    color: #515154;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* Fee Table */
+.crypto-betting-widget .fee-table {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.crypto-betting-widget .fee-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.crypto-betting-widget .fee-row:last-child {
+    border-bottom: none;
+}
+
+.crypto-betting-widget .fee-label {
+    color: #515154;
+    font-size: 0.875rem;
+}
+
+.crypto-betting-widget .fee-value {
+    font-weight: 600;
+    color: #1d1d1f;
+    font-size: 0.875rem;
+}
+
+.crypto-betting-widget .fee-value.free {
+    color: #22c55e;
+}
+
+/* Pros & Cons Grid */
+.crypto-betting-widget .proscons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.crypto-betting-widget .pros-list,
+.crypto-betting-widget .cons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.crypto-betting-widget .pros-list h5,
+.crypto-betting-widget .cons-list h5 {
+    font-size: 1rem;
+    margin: 0 0 0.75rem 0;
+}
+
+.crypto-betting-widget .pros-list h5 {
+    color: #22c55e;
+}
+
+.crypto-betting-widget .cons-list h5 {
+    color: #ef4444;
+}
+
+.crypto-betting-widget .pros-list li,
+.crypto-betting-widget .cons-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #515154;
+    line-height: 1.6;
+}
+
+.crypto-betting-widget .pros-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.crypto-betting-widget .cons-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: #ef4444;
+    font-weight: 700;
+}
+
+/* Risk Warning */
+.crypto-betting-widget .risk-warning {
+    padding: 1rem 1.5rem;
+    background: rgba(239, 68, 68, 0.05);
+    border-top: 2px solid rgba(239, 68, 68, 0.2);
+}
+
+.crypto-betting-widget .risk-warning p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #515154;
+}
+
+/* Content Section */
+.crypto-betting-widget .content-section {
+    margin-bottom: 2rem;
+}
+
+.crypto-betting-widget .content-section h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.01em;
+}
+
+.crypto-betting-widget .content-section .lead {
+    font-size: 1.125rem;
+    color: #515154;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - Mobile Optimizations
+   =================================== */
+
+@media (max-width: 768px) {
+    .crypto-betting-widget .article-header {
+        padding: 2rem 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+    }
+
+    .crypto-betting-widget .article-header h1 {
+        font-size: 1.875rem;
+    }
+
+    .crypto-betting-widget .quick-verdict {
+        padding: 1.25rem;
+    }
+
+    .crypto-betting-widget .qv-categories {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .crypto-betting-widget .qv-winner-name {
+        font-size: 1rem;
+    }
+
+    .crypto-betting-widget .qv-trust-signals {
+        gap: 1rem;
+    }
+
+    .crypto-betting-widget .table-container {
+        padding: 1.25rem;
+    }
+
+    .crypto-betting-widget .platform-table {
+        min-width: 700px;
+    }
+
+    /* Hide star icons on mobile, show text rating only */
+    .crypto-betting-widget .star {
+        display: none;
+    }
+
+    .crypto-betting-widget .qv-rating-stars {
+        display: none;
+    }
+
+    .crypto-betting-widget .rating-stars {
+        display: none;
+    }
+
+    /* Make text rating more prominent */
+    .crypto-betting-widget .qv-winner-rating {
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 0.25rem 0.5rem;
+        background: rgba(255, 107, 53, 0.1);
+        border-radius: 4px;
+        margin-top: 0.5rem;
+    }
+
+    .crypto-betting-widget .qv-winner-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* Hide decorative icons on mobile */
+    .crypto-betting-widget .qv-trust-icon {
+        display: none;
+    }
+
+    .crypto-betting-widget .qv-arrow {
+        display: none;
+    }
+
+    .crypto-betting-widget .qv-trust-item {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+    }
+
+    .crypto-betting-widget .platform-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .crypto-betting-widget .card-header {
+        min-height: 150px;
+        padding: 1.5rem;
+    }
+
+    .crypto-betting-widget .platform-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .crypto-betting-widget .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .crypto-betting-widget .tabs-container {
+        padding: 1rem;
+    }
+
+    .crypto-betting-widget .proscons-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .crypto-betting-widget .article-header {
+        padding: 1.5rem 1.25rem;
+        border-radius: 10px;
+    }
+
+    .crypto-betting-widget .article-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .crypto-betting-widget .quick-verdict {
+        padding: 1rem;
+    }
+
+    .crypto-betting-widget .qv-title {
+        font-size: 1.25rem;
+    }
+
+    .crypto-betting-widget .qv-category-header {
+        padding: 0.75rem 0.875rem 0.5rem;
+    }
+
+    .crypto-betting-widget .qv-category-body {
+        padding: 0.75rem 0.875rem;
+    }
+
+    .crypto-betting-widget .qv-winner-name {
+        font-size: 0.9375rem;
+    }
+
+    .crypto-betting-widget .qv-trust-signals {
+        gap: 0.75rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .crypto-betting-widget .qv-trust-item {
+        font-size: 0.6875rem;
+        max-width: calc(50% - 0.5rem);
+    }
+
+    .crypto-betting-widget .qv-compare-btn {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.8125rem;
+    }
+
+    .crypto-betting-widget .table-container {
+        padding: 1rem;
+    }
+
+    .crypto-betting-widget .card-header {
+        padding: 1rem;
+        min-height: 120px;
+    }
+
+    .crypto-betting-widget .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .crypto-betting-widget .platform-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .crypto-betting-widget .platform-tagline {
+        font-size: 0.875rem;
+    }
+
+    .crypto-betting-widget .stats-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .crypto-betting-widget .cta-button {
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+
+    .crypto-betting-widget .tab-button {
+        font-size: 0.75rem;
+        padding: 0.625rem 0.75rem;
+    }
+
+    .crypto-betting-widget .content-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ===================================
+   PRINT STYLES
+   =================================== */
+
+@media print {
+    .crypto-betting-widget .qv-category:hover,
+    .crypto-betting-widget .cta-button:hover,
+    .crypto-betting-widget .qv-compare-btn:hover {
+        transform: none;
+    }
+
+    .crypto-betting-widget .tab-button {
+        display: none;
+    }
+
+    .crypto-betting-widget .tab-pane {
+        display: block !important;
+    }
+}
