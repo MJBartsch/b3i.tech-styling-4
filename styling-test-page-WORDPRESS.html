@@ -1,0 +1,91 @@
+<!-- WORDPRESS/ELEMENTOR OPTIMIZED VERSION -->
+<!-- Use this version if the standard version doesn't work in WordPress -->
+
+<div class="crypto-betting-widget">
+<article>
+        <header class="article-header">
+            <h1>What Are the Best Crypto Betting Sites in the UK? <span class="highlight">[2025]</span></h1>
+            <p class="intro">Bitcoin betting sites are capturing the attention of UK bettors, but only a handful of these platforms are worth joining. Our list introduces you to reputable crypto betting sites that ensure an unbeatable betting experience through their unmatched bonuses, extensive sports coverage, and lightning-fast payouts.</p>
+            <p class="intro">After testing dozens of platforms, we've identified the top crypto betting sites that UK bettors can trust in 2025. Each has been verified for security, licensing, and reliability.</p>
+        </header>
+
+<!-- NOTE: The rest of the HTML content is identical to styling-test-page-fixed.html -->
+<!-- Only the JavaScript at the end is different -->
+
+<!-- Copy ALL content from styling-test-page-fixed.html here -->
+<!-- Then replace the <script> section with the one below -->
+
+</article>
+
+<!-- WORDPRESS-COMPATIBLE JAVASCRIPT using jQuery -->
+<script>
+jQuery(document).ready(function($) {
+    'use strict';
+
+    console.log('[Crypto Widget] Initializing...');
+
+    // Check if widget exists
+    if ($('.crypto-betting-widget').length === 0) {
+        console.error('[Crypto Widget] Widget not found!');
+        return;
+    }
+    console.log('[Crypto Widget] Widget found');
+
+    // Initialize FAQ accordions
+    $('.crypto-betting-widget .faq-question').on('click', function() {
+        var $faqItem = $(this).closest('.faq-item');
+        $faqItem.toggleClass('active');
+        console.log('[Crypto Widget] FAQ toggled');
+    });
+
+    // Initialize Tabs - using jQuery event delegation
+    $('.crypto-betting-widget').on('click', '.tab-button', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var $button = $(this);
+        var tabName = $button.attr('data-tab');
+        var $platformCard = $button.closest('.platform-card');
+
+        console.log('[Crypto Widget] Tab clicked:', tabName);
+
+        if (!tabName || !$platformCard.length) {
+            console.error('[Crypto Widget] Missing tab name or platform card');
+            return;
+        }
+
+        // Hide all tab panes in this card
+        $platformCard.find('.tab-pane').removeClass('active').hide();
+
+        // Deactivate all tab buttons in this card
+        $platformCard.find('.tab-button')
+            .removeClass('active')
+            .attr('aria-selected', 'false');
+
+        // Show the selected tab pane
+        var $targetPane = $platformCard.find('#' + tabName);
+
+        if ($targetPane.length) {
+            $targetPane.addClass('active').show();
+            $button.addClass('active').attr('aria-selected', 'true');
+            console.log('[Crypto Widget] Tab activated:', tabName);
+        } else {
+            console.error('[Crypto Widget] Tab pane not found:', tabName);
+        }
+    });
+
+    // Force first tab to be visible on load
+    $('.crypto-betting-widget .platform-card').each(function() {
+        var $card = $(this);
+        var $firstPane = $card.find('.tab-pane.active').first();
+        if ($firstPane.length) {
+            $firstPane.show();
+            console.log('[Crypto Widget] First tab shown:', $firstPane.attr('id'));
+        }
+    });
+
+    console.log('[Crypto Widget] Initialization complete!');
+});
+</script>
+
+</div>

@@ -1,0 +1,101 @@
+/* ==================================================
+   ELEMENTOR OVERRIDE CSS
+   Add this to Elementor → Settings → Custom CSS
+
+   This forces tab functionality to work even with
+   WordPress/Elementor CSS conflicts
+   ================================================== */
+
+/* Force tab panes to hide/show correctly */
+.crypto-betting-widget .tab-pane {
+    display: none !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    transition: none !important;
+}
+
+.crypto-betting-widget .tab-pane.active {
+    display: block !important;
+    opacity: 1 !important;
+    height: auto !important;
+    overflow: visible !important;
+    visibility: visible !important;
+}
+
+/* Ensure buttons are clickable */
+.crypto-betting-widget .tab-button {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 100 !important;
+    user-select: none !important;
+}
+
+/* Ensure tab containers are visible */
+.crypto-betting-widget .tabs-container,
+.crypto-betting-widget .tab-nav,
+.crypto-betting-widget .tab-content {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Prevent Elementor from hiding our content */
+.elementor-widget-html .crypto-betting-widget,
+.elementor-widget-html .crypto-betting-widget * {
+    visibility: visible !important;
+}
+
+/* Force content to be visible */
+.crypto-betting-widget .tab-pane.active h4,
+.crypto-betting-widget .tab-pane.active p,
+.crypto-betting-widget .tab-pane.active div,
+.crypto-betting-widget .tab-pane.active ul,
+.crypto-betting-widget .tab-pane.active li {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Tab button active state */
+.crypto-betting-widget .tab-button.active {
+    background: #fff !important;
+    color: #ff6b35 !important;
+    border-bottom: 3px solid #ff6b35 !important;
+}
+
+/* Platform card visibility */
+.crypto-betting-widget .platform-card {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Prevent WordPress/Elementor from breaking layout */
+.crypto-betting-widget .fee-table,
+.crypto-betting-widget .proscons-grid,
+.crypto-betting-widget .pros-list,
+.crypto-betting-widget .cons-list {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Fix for Elementor flexbox containers */
+.elementor-element:has(.crypto-betting-widget) {
+    overflow: visible !important;
+}
+
+/* Diagnostic Mode - Uncomment to see what's happening */
+/*
+.crypto-betting-widget .tab-pane {
+    border: 3px solid red !important;
+    min-height: 50px !important;
+    background: rgba(255, 0, 0, 0.1) !important;
+}
+
+.crypto-betting-widget .tab-pane.active {
+    border: 3px solid green !important;
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+*/

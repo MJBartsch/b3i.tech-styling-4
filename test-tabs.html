@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Test</title>
+    <link rel="stylesheet" href="styling-test-page-fixed.css">
+</head>
+<body style="padding: 20px; background: #f5f5f5;">
+
+<h1>Tab Functionality Test</h1>
+
+<div class="crypto-betting-widget">
+    <div class="platform-card" id="test-card">
+        <div class="card-header">
+            <h2>Test Platform</h2>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tab-nav" role="tablist">
+                <button class="tab-button active" role="tab" data-tab="test-overview" aria-selected="true">Overview</button>
+                <button class="tab-button" role="tab" data-tab="test-fees" aria-selected="false">Fees</button>
+                <button class="tab-button" role="tab" data-tab="test-sports" aria-selected="false">Sports</button>
+                <button class="tab-button" role="tab" data-tab="test-proscons" aria-selected="false">Pros & Cons</button>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" role="tabpanel" id="test-overview">
+                    <h4>Overview Content</h4>
+                    <p>This is the overview tab. You should see this text when the page loads.</p>
+                    <p><strong>If you can see this, the CSS is working!</strong></p>
+                </div>
+
+                <div class="tab-pane" role="tabpanel" id="test-fees">
+                    <h4>Fees Content</h4>
+                    <p>This is the fees tab. Click "Fees" button above to see this.</p>
+                    <p><strong>If you can see this after clicking Fees, JavaScript is working!</strong></p>
+                </div>
+
+                <div class="tab-pane" role="tabpanel" id="test-sports">
+                    <h4>Sports Content</h4>
+                    <p>This is the sports tab.</p>
+                </div>
+
+                <div class="tab-pane" role="tabpanel" id="test-proscons">
+                    <h4>Pros & Cons Content</h4>
+                    <p>This is the pros and cons tab.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 40px; padding: 20px; background: white; border: 2px solid #333;">
+    <h3>Debug Information:</h3>
+    <div id="debug"></div>
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    const debugDiv = document.getElementById('debug');
+
+    function log(message) {
+        const p = document.createElement('p');
+        p.textContent = message;
+        debugDiv.appendChild(p);
+    }
+
+    // Check if elements exist
+    log('✓ Script loaded');
+
+    const widget = document.querySelector('.crypto-betting-widget');
+    log(widget ? '✓ Widget found' : '✗ Widget NOT found');
+
+    const tabButtons = document.querySelectorAll('.tab-button');
+    log(`✓ Found ${tabButtons.length} tab buttons`);
+
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    log(`✓ Found ${tabPanes.length} tab panes`);
+
+    const activePane = document.querySelector('.tab-pane.active');
+    log(activePane ? `✓ Active pane found: ${activePane.id}` : '✗ No active pane found');
+
+    // Check CSS
+    if (activePane) {
+        const style = window.getComputedStyle(activePane);
+        log(`✓ Active pane display: ${style.display}`);
+    }
+
+    // Wait for DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    function init() {
+        log('✓ DOM ready, initializing tabs...');
+        initTabs();
+    }
+
+    function initTabs() {
+        const widget = document.querySelector('.crypto-betting-widget');
+        if (!widget) {
+            log('✗ Widget not found in init!');
+            return;
+        }
+
+        log('✓ Adding click listener to widget...');
+
+        widget.addEventListener('click', function(e) {
+            const button = e.target.closest('.tab-button');
+            if (!button) return;
+
+            log(`✓ Tab clicked: ${button.textContent}`);
+
+            e.preventDefault();
+            const tabName = button.getAttribute('data-tab');
+            log(`✓ Tab ID: ${tabName}`);
+
+            const platformCard = button.closest('.platform-card');
+
+            if (!tabName || !platformCard) {
+                log('✗ Missing tabName or platformCard');
+                return;
+            }
+
+            // Hide all panes in this card
+            const panes = platformCard.querySelectorAll('.tab-pane');
+            log(`✓ Found ${panes.length} panes to toggle`);
+            panes.forEach(pane => pane.classList.remove('active'));
+
+            // Remove active from all buttons in this card
+            const buttons = platformCard.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            // Show selected pane and mark button active
+            const targetPane = platformCard.querySelector('#' + tabName);
+            if (targetPane) {
+                targetPane.classList.add('active');
+                button.classList.add('active');
+                button.setAttribute('aria-selected', 'true');
+                log(`✓ Activated pane: ${tabName}`);
+            } else {
+                log(`✗ Could not find pane with id: ${tabName}`);
+            }
+        });
+
+        log('✓ Tab initialization complete!');
+    }
+})();
+</script>
+
+</body>
+</html>
