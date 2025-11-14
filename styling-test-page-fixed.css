@@ -19,43 +19,6 @@
     box-sizing: border-box;
 }
 
-/* Prevent widget styles from leaking to siblings */
-.crypto-betting-widget ~ *,
-.crypto-betting-widget + * {
-    all: revert !important;
-}
-
-/* Ensure SVG styles ONLY apply inside widget */
-body:not(.crypto-betting-widget) svg,
-.elementor-nav-menu svg,
-header svg,
-nav svg,
-.site-header svg {
-    max-width: none !important;
-    max-height: none !important;
-    vertical-align: baseline !important;
-}
-
-/* Force navigation to ignore widget styles */
-.elementor-nav-menu,
-.elementor-nav-menu *,
-header nav,
-header nav * {
-    all: revert !important;
-}
-
-/* Ensure widget container is properly isolated */
-.elementor-widget-html:has(.crypto-betting-widget) {
-    isolation: isolate !important;
-    contain: layout style !important;
-}
-
-/* Prevent widget from affecting subsequent Elementor elements */
-.crypto-betting-widget + .elementor-element,
-.elementor-widget-html:has(.crypto-betting-widget) + .elementor-element {
-    all: revert !important;
-}
-
 /* ==========================================================
    END ISOLATION LAYER
    ========================================================== */
@@ -126,25 +89,7 @@ header nav * {
 }
 
 /* ==========================================================
-   NAVIGATION PROTECTION - Prevent Top 10 styles from affecting nav
-   ========================================================== */
-
-/* Explicitly protect Elementor navigation from widget styles */
-.elementor-nav-menu,
-.elementor-nav-menu *,
-.elementor-nav-menu ul,
-.elementor-nav-menu li,
-.elementor-nav-menu a,
-header nav,
-header nav *,
-header nav ul,
-header nav li,
-header nav a {
-    all: revert !important;
-}
-
-/* ==========================================================
-   TOP 10 LIST - Compact Styling (Scoped to prevent nav conflicts)
+   TOP 10 LIST - Compact Styling (Properly scoped to .top10-section)
    ========================================================== */
 
 /* Top 10 Section Container */
