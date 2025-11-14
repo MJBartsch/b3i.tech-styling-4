@@ -4187,3 +4187,149 @@
    - Category footer: Explicit padding constraints on mobile
    =================================== */
 
+
+/* ==========================================================
+   ACCESSIBILITY ENHANCEMENTS
+   Added to meet WCAG 2.1 Level AA compliance
+   ========================================================== */
+
+/* Skip to main content link - hidden until focused */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 100000;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #ff6b35;
+    outline-offset: 2px;
+}
+
+/* Visually hidden class - hides content visually but keeps it for screen readers */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Focus visible styles for keyboard navigation */
+.crypto-betting-widget *:focus-visible {
+    outline: 3px solid #ff6b35;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Enhanced focus styles for CTA buttons */
+.crypto-betting-widget .cta-button:focus,
+.crypto-betting-widget .cta-button:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(255, 107, 53, 0.5), 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Enhanced focus styles for tab buttons */
+.crypto-betting-widget .tab-button:focus,
+.crypto-betting-widget .tab-button:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: -3px;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Focus styles for all links */
+.crypto-betting-widget a:focus,
+.crypto-betting-widget a:focus-visible {
+    outline: 3px solid #ff6b35;
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Enhanced focus for top10 links */
+.crypto-betting-widget .top10-link:focus,
+.crypto-betting-widget .top10-link:focus-visible {
+    outline: 3px solid #ff6b35;
+    outline-offset: 3px;
+}
+
+/* Focus for quick verdict view details links */
+.crypto-betting-widget .qv-view-details:focus,
+.crypto-betting-widget .qv-view-details:focus-visible {
+    outline: 3px solid #ff6b35;
+    outline-offset: 2px;
+}
+
+/* Ensure focus indicators are never hidden */
+.crypto-betting-widget *:focus {
+    outline: 2px solid #ff6b35;
+    outline-offset: 2px;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .crypto-betting-widget *,
+    .crypto-betting-widget *::before,
+    .crypto-betting-widget *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    /* Disable hover transforms for users who prefer reduced motion */
+    .crypto-betting-widget .top10-item:hover,
+    .crypto-betting-widget .cta-button:hover,
+    .crypto-betting-widget .platform-card:hover {
+        transform: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .crypto-betting-widget {
+        border: 2px solid currentColor;
+    }
+    
+    .crypto-betting-widget .cta-button {
+        border: 2px solid #fff;
+    }
+    
+    .crypto-betting-widget .tab-button.active {
+        border-bottom: 4px solid currentColor;
+    }
+}
+
+/* Ensure sufficient color contrast for text */
+.crypto-betting-widget .qv-trust-item,
+.crypto-betting-widget .cta-note {
+    color: #515154; /* Ensures WCAG AA contrast ratio */
+}
+
+/* Make sure table captions are truly visually hidden */
+.crypto-betting-widget table caption.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* ==========================================================
+   END ACCESSIBILITY ENHANCEMENTS
+   ========================================================== */
