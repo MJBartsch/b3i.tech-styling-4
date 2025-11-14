@@ -126,7 +126,25 @@ header nav * {
 }
 
 /* ==========================================================
-   TOP 10 LIST - Compact Styling
+   NAVIGATION PROTECTION - Prevent Top 10 styles from affecting nav
+   ========================================================== */
+
+/* Explicitly protect Elementor navigation from widget styles */
+.elementor-nav-menu,
+.elementor-nav-menu *,
+.elementor-nav-menu ul,
+.elementor-nav-menu li,
+.elementor-nav-menu a,
+header nav,
+header nav *,
+header nav ul,
+header nav li,
+header nav a {
+    all: revert !important;
+}
+
+/* ==========================================================
+   TOP 10 LIST - Compact Styling (Scoped to prevent nav conflicts)
    ========================================================== */
 
 /* Top 10 Section Container */
@@ -135,7 +153,7 @@ header nav * {
 }
 
 /* Top 10 List Container */
-.crypto-betting-widget .top10-list {
+.crypto-betting-widget .top10-section .top10-list {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -143,7 +161,7 @@ header nav * {
 }
 
 /* Individual Top 10 Item */
-.crypto-betting-widget .top10-item {
+.crypto-betting-widget .top10-section .top10-item {
     display: grid;
     grid-template-columns: auto auto 1fr auto;
     gap: 1rem;
@@ -158,27 +176,27 @@ header nav * {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.03), -2px -2px 4px rgba(255, 255, 255, 0.9);
 }
 
-.crypto-betting-widget .top10-item:hover {
+.crypto-betting-widget .top10-section .top10-item:hover {
     transform: translateY(-2px);
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.08), -4px -4px 12px rgba(255, 255, 255, 0.9);
     border-color: rgba(255, 107, 53, 0.2);
 }
 
 /* Special styling for top 3 - subtle emphasis */
-.crypto-betting-widget .top10-item.rank-1 {
+.crypto-betting-widget .top10-section .top10-item.rank-1 {
     border-left: 3px solid #ff6b35;
 }
 
-.crypto-betting-widget .top10-item.rank-2 {
+.crypto-betting-widget .top10-section .top10-item.rank-2 {
     border-left: 3px solid #86868b;
 }
 
-.crypto-betting-widget .top10-item.rank-3 {
+.crypto-betting-widget .top10-section .top10-item.rank-3 {
     border-left: 3px solid #c0c0c0;
 }
 
 /* Rank Badge */
-.crypto-betting-widget .rank-badge {
+.crypto-betting-widget .top10-section .rank-badge {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,15 +210,15 @@ header nav * {
     flex-shrink: 0;
 }
 
-.crypto-betting-widget .rank-badge.gold,
-.crypto-betting-widget .rank-badge.silver,
-.crypto-betting-widget .rank-badge.bronze {
+.crypto-betting-widget .top10-section .rank-badge.gold,
+.crypto-betting-widget .top10-section .rank-badge.silver,
+.crypto-betting-widget .top10-section .rank-badge.bronze {
     background: #ff6b35;
     color: #fff;
 }
 
 /* Platform Logo */
-.crypto-betting-widget .top10-logo {
+.crypto-betting-widget .top10-section .top10-logo {
     width: 60px;
     height: 60px;
     flex-shrink: 0;
@@ -213,7 +231,7 @@ header nav * {
     overflow: hidden;
 }
 
-.crypto-betting-widget .top10-logo img {
+.crypto-betting-widget .top10-section .top10-logo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -221,7 +239,7 @@ header nav * {
 }
 
 /* Content Area */
-.crypto-betting-widget .top10-content {
+.crypto-betting-widget .top10-section .top10-content {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -230,14 +248,14 @@ header nav * {
 }
 
 /* Header with Platform Name and Badge */
-.crypto-betting-widget .top10-header {
+.crypto-betting-widget .top10-section .top10-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
 }
 
-.crypto-betting-widget .top10-header .platform-name {
+.crypto-betting-widget .top10-section .top10-header .platform-name {
     font-size: 1.125rem;
     font-weight: 700;
     color: #1d1d1f;
@@ -246,9 +264,9 @@ header nav * {
 }
 
 /* Special Badges */
-.crypto-betting-widget .best-badge,
-.crypto-betting-widget .speed-badge,
-.crypto-betting-widget .mobile-badge {
+.crypto-betting-widget .top10-section .best-badge,
+.crypto-betting-widget .top10-section .speed-badge,
+.crypto-betting-widget .top10-section .mobile-badge {
     display: inline-flex;
     align-items: center;
     padding: 0.125rem 0.5rem;
@@ -262,27 +280,27 @@ header nav * {
 }
 
 /* Inline Rating */
-.crypto-betting-widget .platform-rating-inline {
+.crypto-betting-widget .top10-section .platform-rating-inline {
     display: flex;
     align-items: center;
     gap: 0.375rem;
 }
 
-.crypto-betting-widget .platform-rating-inline .rating-stars {
+.crypto-betting-widget .top10-section .platform-rating-inline .rating-stars {
     display: inline-flex;
     gap: 1px;
     color: #ff6b35;
     font-size: 0.75rem;
 }
 
-.crypto-betting-widget .platform-rating-inline .rating-value {
+.crypto-betting-widget .top10-section .platform-rating-inline .rating-value {
     font-size: 0.75rem;
     font-weight: 600;
     color: #86868b;
 }
 
 /* Description */
-.crypto-betting-widget .platform-description {
+.crypto-betting-widget .top10-section .platform-description {
     font-size: 0.875rem;
     line-height: 1.5;
     color: #515154;
@@ -290,8 +308,8 @@ header nav * {
     display: none; /* Hide description for more compact layout */
 }
 
-/* Feature Highlights */
-.crypto-betting-widget .feature-highlights {
+/* Feature Highlights - Scoped to prevent nav conflicts */
+.crypto-betting-widget .top10-section .feature-highlights {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -300,7 +318,7 @@ header nav * {
     margin: 0;
 }
 
-.crypto-betting-widget .feature-highlights li {
+.crypto-betting-widget .top10-section .feature-highlights li {
     display: inline-flex;
     align-items: center;
     padding: 0.25rem 0.5rem;
@@ -311,15 +329,15 @@ header nav * {
     font-weight: 400;
 }
 
-.crypto-betting-widget .feature-highlights li::before {
+.crypto-betting-widget .top10-section .feature-highlights li::before {
     content: "•";
     margin-right: 0.375rem;
     color: #ff6b35;
     font-weight: 700;
 }
 
-/* Link to Review */
-.crypto-betting-widget .top10-link {
+/* Link to Review - Scoped to prevent nav conflicts */
+.crypto-betting-widget .top10-section .top10-link {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
@@ -336,19 +354,19 @@ header nav * {
     flex-shrink: 0;
 }
 
-.crypto-betting-widget .top10-link:hover {
+.crypto-betting-widget .top10-section .top10-link:hover {
     background: #ff6b35;
     color: #fff;
     border-color: #ff6b35;
     transform: translateX(2px);
 }
 
-.crypto-betting-widget .top10-link .link-arrow {
+.crypto-betting-widget .top10-section .top10-link .link-arrow {
     font-size: 1rem;
     transition: transform 0.3s ease;
 }
 
-.crypto-betting-widget .top10-link:hover .link-arrow {
+.crypto-betting-widget .top10-section .top10-link:hover .link-arrow {
     transform: translateX(3px);
 }
 
@@ -368,52 +386,52 @@ header nav * {
         display: inline-block !important;
     }
 
-    /* Top 10 List - Mobile Responsive */
-    .crypto-betting-widget .top10-item {
+    /* Top 10 List - Mobile Responsive (Scoped) */
+    .crypto-betting-widget .top10-section .top10-item {
         grid-template-columns: auto 1fr auto;
         grid-template-rows: auto;
         gap: 0.75rem;
         padding: 0.875rem;
     }
 
-    .crypto-betting-widget .rank-badge {
+    .crypto-betting-widget .top10-section .rank-badge {
         width: 32px;
         height: 32px;
         font-size: 1rem;
     }
 
-    .crypto-betting-widget .top10-logo {
+    .crypto-betting-widget .top10-section .top10-logo {
         width: 48px;
         height: 48px;
     }
 
-    .crypto-betting-widget .top10-content {
+    .crypto-betting-widget .top10-section .top10-content {
         grid-column: 2 / 3;
     }
 
-    .crypto-betting-widget .top10-header .platform-name {
+    .crypto-betting-widget .top10-section .top10-header .platform-name {
         font-size: 1rem;
     }
 
-    .crypto-betting-widget .feature-highlights {
+    .crypto-betting-widget .top10-section .feature-highlights {
         gap: 0.375rem;
     }
 
-    .crypto-betting-widget .feature-highlights li {
+    .crypto-betting-widget .top10-section .feature-highlights li {
         font-size: 0.6875rem;
         padding: 0.1875rem 0.375rem;
     }
 
-    .crypto-betting-widget .top10-link {
+    .crypto-betting-widget .top10-section .top10-link {
         padding: 0.375rem 0.75rem;
         font-size: 0.75rem;
     }
 
-    .crypto-betting-widget .top10-link .link-text {
+    .crypto-betting-widget .top10-section .top10-link .link-text {
         display: none;
     }
 
-    .crypto-betting-widget .top10-link .link-arrow {
+    .crypto-betting-widget .top10-section .top10-link .link-arrow {
         font-size: 1.125rem;
     }
 }
